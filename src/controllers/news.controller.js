@@ -20,6 +20,41 @@ class News {
         res.end();
     }
 
+    topHeadlines(req, res) {
+        let country = req.params.country || 'mx';
+        const url = `${apiUrl}top-headlines?country=${country}&apiKey=${apiKey}`;
+        axios.get(url).then(response => {
+            res.send(response.data.articles);
+        }).catch(err => {
+            res.send('Failure');
+            res.end();
+        });
+    }
+
+    noticias(req, res) {
+        let sources = req.params.sources || '';
+        const url = `${apiUrl}everything?q=${req.query.search}&sources=${sources}&apiKey=${apiKey}`;
+        console.log("url :", url);
+        axios.get(url).then(response => {
+            res.send(response.data.articles);
+        }).catch(err => {
+            res.send('Failure');
+            res.end();
+        });
+    }
+
+    sources(req, res) {
+        let sources = req.params.sources || '';
+        const url = `${apiUrl}sources?apiKey=${apiKey}`;
+        console.log(url);
+        axios.get(url).then(response => {
+            res.send(response.data);
+        }).catch(err => {
+            res.send('Failure');
+            res.end();
+        });
+    }
+
 }
 
 module.exports = new News();
