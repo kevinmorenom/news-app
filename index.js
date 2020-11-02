@@ -9,11 +9,12 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const MongoConnect = require('./src/controllers/db.controller');
 const apiRoutes = require('./routes');
-
+const cors = require('cors');
 // const apiNews = require('./api');
 // app.use('/api', apiNews);
 
 news(app);
+app.use(cors());
 app.use('/api', apiRoutes);
 app.use('/api', jsonParser);
 app.use('/assets', express.static(path.join(__dirname, 'public')));
