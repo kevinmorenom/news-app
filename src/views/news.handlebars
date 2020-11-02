@@ -1,0 +1,13 @@
+<h1>Noticias</h1>
+<div id="news-container" class="grid">
+            {{#each headline}}
+            <div class='sm-50 md-25'>
+                <a href="{{url}}">{{title}} </a>
+                 {{#if urlToImage}}
+                <img src="{{urlToImage}}" alt=""> {{else}}
+                <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-illustration-132483053.jpg" alt=""> {{/if}} 
+            </div>
+            {{else}}
+            <div class="xs-100">No hay elementos para mostrar</div>
+            {{/each}}
+</div>
