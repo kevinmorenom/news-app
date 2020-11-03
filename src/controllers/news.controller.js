@@ -46,9 +46,8 @@ class News {
     sources(req, res) {
         let sources = req.params.sources || '';
         const url = `${apiUrl}sources?apiKey=${apiKey}`;
-        console.log(url);
         axios.get(url).then(response => {
-            res.send(response.data);
+            res.send(response.data.sources);
         }).catch(err => {
             res.send('Failure');
             res.end();
