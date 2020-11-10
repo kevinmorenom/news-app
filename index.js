@@ -15,8 +15,8 @@ const cors = require('cors');
 
 news(app);
 app.use(cors());
-app.use('/api', apiRoutes);
 app.use('/api', jsonParser);
+app.use('/api', apiRoutes);
 app.use('/assets', express.static(path.join(__dirname, 'public')));
 
 app.engine('handlebars', handlebars());
